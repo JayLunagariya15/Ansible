@@ -1,0 +1,11 @@
+---
+- name: run script
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: run script
+      shell: ./practice.sh >> practice.log 
+      args:
+        executable: /bin/bash
+        chdir: /home/ansible/ansible-playbooks
+        creates: practice.log

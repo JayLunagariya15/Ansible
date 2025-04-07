@@ -1,0 +1,47 @@
+---
+- name: create files
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: creating file 
+      file:
+        path: /home/ansible/ansible-playbooks/movies.txt
+        state: touch
+        # Permission mode
+        mode: u=rwx,g=rwx,o=rwx
+        user: jay
+        groups: QA,DEV
+
+---
+- name: create Dir
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: creating Dir
+      file:
+        path: /home/ansible/ansible-playbooks/Playlist
+        state: directory
+        # Permission mode
+        mode: u=rwx,g=rwx,o=rwx
+        user: jay
+
+---
+- name: remove files
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: remove files
+      file:
+        path: /home/ansible/ansible-playbooks/movies.txt
+        state: absent
+
+
+---
+- name: remove folder
+  hosts: localhost  #all hosts
+ 
+  tasks:
+    - name: remove folder
+      file:
+        path: /home/ansible/ansible-playbooks/Playlist
+        state: directory
