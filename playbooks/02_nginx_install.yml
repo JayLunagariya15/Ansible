@@ -1,0 +1,32 @@
+---
+
+- name: install nginx
+  host: localhost  #all hosts
+
+  tasks:
+    - name: nginx installation
+      apt: 
+        name: nginx
+        state: present
+
+---
+- name : start nginx
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+---
+
+- name: remove nginx
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: nginx removal
+      apt: 
+        name: nginx
+        state: absent

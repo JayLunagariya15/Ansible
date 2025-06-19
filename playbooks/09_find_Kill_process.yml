@@ -1,0 +1,9 @@
+---
+- name: Find and Kill Process
+  hosts: localhost  # all hosts
+
+  tasks:
+    - name: Find process ID
+      shell: pgrep nginx
+      register: process_id
+      ignore_errors: yes

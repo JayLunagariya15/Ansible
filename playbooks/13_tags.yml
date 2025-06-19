@@ -1,0 +1,22 @@
+---
+
+- name: install nginx
+  host: localhost  #all hosts
+
+  tasks:
+    - name: nginx installation
+      apt: 
+        name: nginx
+        state: present
+      tags: nginx-i
+
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+      tags: nginx-start
+
+
+# ansible-playbook 13_tags.yml  --list-tags
+# ansible-playbook 13_tags.yml  -t nginx-i

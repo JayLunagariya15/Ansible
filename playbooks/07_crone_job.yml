@@ -1,0 +1,80 @@
+---
+- name: set crone job
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: set crone job
+      cron:
+        name: "run script"
+        minute: "10"
+        hour: "15"
+        day: "*"
+        month: "*"
+        weekday: "*"
+        user: jay
+        job: /home/ansible/ansible-playbooks/practice.sh 
+        state: present
+
+# crontab -l / -e
+
+---
+- name: remove crone
+  hosts: localhost  #all hosts
+
+  tasks:
+    - name: crone removal
+      cron:
+        name: run script
+        state: absent
+
+
+--- 
+- name: disable crone
+  hosts: localhost  #all hosts
+
+  tasks: 
+    - name: disable crone
+      cron:
+        name: run script
+        state: disabled
+
+---
+- name: env for crone
+  hosts: localhost  #all hosts
+
+  tasks: 
+    - name: env for crone
+      cron:
+        name: PATH
+        env: yes
+        user: jay
+        job: /home/ansible/ansible-playbooks/practice.sh
+        state: present
+
+
+---
+- name: env for crone
+  hosts: localhost  #all hosts
+
+  tasks: 
+    - name: env for crone
+      cron:
+        name: VAR
+        env: yes
+        user: jay
+        job: /home/ansible/ansible-playbooks/practice.sh
+        insertbefore: PATH        
+
+---
+- name: remove env for crone
+  hosts: localhost  #all hosts
+
+  tasks: 
+    - name: env for crone
+      cron:
+        name: VAR
+        env: yes
+        user: jay
+        job: /home/ansible/ansible-playbooks/practice.sh
+        insertbefore: PATH        
+        state: absent

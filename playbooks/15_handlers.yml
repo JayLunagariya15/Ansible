@@ -1,0 +1,24 @@
+---
+- name: handler used
+  hosts: localhost #all
+  become: true
+  vars: 
+    - app: nginx
+
+  tasks:
+    - name: firewall
+      firewalld:
+        port: 80/tcp
+        state: enabled
+        permanent: true
+      notify:
+        - reload nginx
+
+  handler:
+    - name: reload nginx
+      service: 
+        name: firewalld
+        state: reloaded
+
+
+# to see changes make state disable then run and then change to enable

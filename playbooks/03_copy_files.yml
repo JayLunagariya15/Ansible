@@ -1,0 +1,26 @@
+---
+- name: copy files from host to client machine
+  hosts: all
+
+  tasks:
+    - name: copy files
+      copy:
+        src: /home/ansible/ansible-playbooks/03_copy_files.yml
+        dest: /home/ansible/ansible-playbooks/03_copy_files.yml
+        # Permission mode
+        mode: u=rw,g=rw,o=r
+        user: jay
+        groups: QA,DEV
+
+
+---
+- name: copy files with backup
+  hosts: all
+
+  tasks:
+    - name: backup files
+      copy:
+        src: /home/ansible/ansible-playbooks/03_copy_files.yml
+        dest: /home/ansible/ansible-playbooks/03_copy_files.yml
+        # backup existing file before overwriting
+        backup: yes

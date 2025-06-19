@@ -1,0 +1,15 @@
+--- 
+- name: variables
+  hosts: localhost  # all
+  become: true
+  vars:
+    - app: nginx
+
+  tasks:
+    - name: Install nginx
+      apt: 
+        name: "{{ app }}"
+        state: present
+      tags:
+      - install
+      - download

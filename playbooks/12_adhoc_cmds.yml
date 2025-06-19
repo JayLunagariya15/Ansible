@@ -1,0 +1,11 @@
+ansible IP -m ping
+
+ansible IP -m copy  -a "src=/home/ansible/file.txt dest=/home/ansible/folder/file.txt mode=0777" -b --ask-become-pass
+
+ansible all -m service -a "name=nginx state=reloaded"
+
+ansible all -m command -a "free -h"
+
+ansible all -m command -a "du -h"
+
+anisble all -m apt -a "git state=present"

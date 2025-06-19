@@ -1,0 +1,14 @@
+---
+- name: Installing Packages
+  hosts: localhost #all
+  become: true
+  vars:
+    - apps: [nano,git,nginx,telnet]
+
+  tasks:
+    - name: installing apps
+      apt:
+        name: "{{ item }}"
+        state: present
+        with_items: "{{ apps }}"
+      tags: install-p

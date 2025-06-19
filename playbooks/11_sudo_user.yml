@@ -1,0 +1,14 @@
+--- 
+- name: Run with SUDO user
+  hosts: localhost # all
+  become: true
+
+  tasks:
+    - name: chceck nginx status
+      service:
+        name: nginx
+        state: reloaded
+
+
+# use ansible-playbook --ask-become-pass 11_sudo_user.yml
+# this will ask password after running this command

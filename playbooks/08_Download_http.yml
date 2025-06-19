@@ -1,0 +1,11 @@
+--- 
+- name: Download python from browser
+  hosts: localhost # all
+
+  tasks:
+    - name: download python
+      get_url: 
+        url: https://www.python.org/downloads/release/python-3133/
+        dest: /home/ansible/apks/
+        owner: jay
+        mode: u=rwx,g=rwx,o=rwx

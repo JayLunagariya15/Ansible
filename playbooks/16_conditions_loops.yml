@@ -1,0 +1,29 @@
+---
+- name: loops and conditions
+  hosts: localhost #all
+  become: true
+
+  tasks:
+    - name: returning numbers
+      commanad:
+        echo: "{{ item }}"
+      loops: [0,2,4,6,8,10]
+      when: 
+        item < 7
+
+
+---
+- name: creating users using loops
+  hosts: localhost # all
+  become: true
+
+  tasks:
+    - name: user creating 
+      users:
+        name: "{{ item }}"
+        shell: /bin/bash
+        group: QA,DEV
+      loops: 
+        - hiren
+        - gaurav
+        - zeel
