@@ -3,5 +3,5 @@
   hosts: localhost  #all hosts
 
   tasks:
-    - name: piny
+    - name: ping
       ping: 
